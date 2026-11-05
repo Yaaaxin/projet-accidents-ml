@@ -1,5 +1,4 @@
 {
-  "validated_utc": "2026-11-05T19:40:21.072100+00:00",
   "checks": {
     "fingerprint_matches_freeze": true,
     "frozen_files_match_sha256": true,

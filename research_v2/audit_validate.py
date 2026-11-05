@@ -2,7 +2,6 @@
 import json
 import gzip
 import hashlib
-from datetime import datetime, timezone
 
 import pandas as pd
 
@@ -71,7 +70,7 @@ def run():
     if not all(checks.values()):
         raise AssertionError({name: value for name, value in checks.items() if not value})
     write_json(AUDIT_RESULTS / "validation.json", {
-        "validated_utc": datetime.now(timezone.utc).isoformat(), "checks": checks,
+        "checks": checks,
         "development_rows": len(development), "corrected_2025_rows": len(final)})
     print(len(checks), "contrôles réussis")
 
