@@ -1,0 +1,380 @@
+[
+  {
+    "split": "random_accident",
+    "features": "all",
+    "model": "majority",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        0,
+        4079
+      ],
+      [
+        0,
+        6802
+      ]
+    ]
+  },
+  {
+    "split": "random_accident",
+    "features": "all",
+    "model": "logistic",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        3632,
+        447
+      ],
+      [
+        256,
+        6546
+      ]
+    ]
+  },
+  {
+    "split": "random_accident",
+    "features": "all",
+    "model": "forest",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        3666,
+        413
+      ],
+      [
+        256,
+        6546
+      ]
+    ]
+  },
+  {
+    "split": "random_accident",
+    "features": "road_only",
+    "model": "majority",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        0,
+        4079
+      ],
+      [
+        0,
+        6802
+      ]
+    ]
+  },
+  {
+    "split": "random_accident",
+    "features": "road_only",
+    "model": "logistic",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        3621,
+        458
+      ],
+      [
+        262,
+        6540
+      ]
+    ]
+  },
+  {
+    "split": "random_accident",
+    "features": "road_only",
+    "model": "forest",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        3631,
+        448
+      ],
+      [
+        262,
+        6540
+      ]
+    ]
+  },
+  {
+    "split": "random_accident",
+    "features": "without_road",
+    "model": "majority",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        0,
+        4079
+      ],
+      [
+        0,
+        6802
+      ]
+    ]
+  },
+  {
+    "split": "random_accident",
+    "features": "without_road",
+    "model": "logistic",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        2522,
+        1557
+      ],
+      [
+        808,
+        5994
+      ]
+    ]
+  },
+  {
+    "split": "random_accident",
+    "features": "without_road",
+    "model": "forest",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        2528,
+        1551
+      ],
+      [
+        693,
+        6109
+      ]
+    ]
+  },
+  {
+    "split": "geographic",
+    "features": "all",
+    "model": "majority",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        0,
+        3963
+      ],
+      [
+        0,
+        7197
+      ]
+    ]
+  },
+  {
+    "split": "geographic",
+    "features": "all",
+    "model": "logistic",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        3629,
+        334
+      ],
+      [
+        185,
+        7012
+      ]
+    ]
+  },
+  {
+    "split": "geographic",
+    "features": "all",
+    "model": "forest",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        3641,
+        322
+      ],
+      [
+        172,
+        7025
+      ]
+    ]
+  },
+  {
+    "split": "geographic",
+    "features": "road_only",
+    "model": "majority",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        0,
+        3963
+      ],
+      [
+        0,
+        7197
+      ]
+    ]
+  },
+  {
+    "split": "geographic",
+    "features": "road_only",
+    "model": "logistic",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        3600,
+        363
+      ],
+      [
+        188,
+        7009
+      ]
+    ]
+  },
+  {
+    "split": "geographic",
+    "features": "road_only",
+    "model": "forest",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        3614,
+        349
+      ],
+      [
+        180,
+        7017
+      ]
+    ]
+  },
+  {
+    "split": "geographic",
+    "features": "without_road",
+    "model": "majority",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        0,
+        3963
+      ],
+      [
+        0,
+        7197
+      ]
+    ]
+  },
+  {
+    "split": "geographic",
+    "features": "without_road",
+    "model": "logistic",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        2502,
+        1461
+      ],
+      [
+        856,
+        6341
+      ]
+    ]
+  },
+  {
+    "split": "geographic",
+    "features": "without_road",
+    "model": "forest",
+    "labels": [
+      0,
+      1
+    ],
+    "rows": "observed",
+    "columns": "predicted",
+    "matrix": [
+      [
+        2507,
+        1456
+      ],
+      [
+        783,
+        6414
+      ]
+    ]
+  }
+]

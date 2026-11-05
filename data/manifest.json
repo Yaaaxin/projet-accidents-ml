@@ -1,0 +1,40 @@
+{
+  "dataset_url": "https://www.data.gouv.fr/datasets/53698f4ca3a729239d2036df",
+  "producer": "Ministère de l’intérieur / ONISR",
+  "year": 2024,
+  "license_label": "Licence Ouverte / Open Licence",
+  "license_url": "https://www.etalab.gouv.fr/wp-content/uploads/2014/05/Licence_Ouverte.pdf",
+  "dictionary_url": "https://www.onisr.securite-routiere.gouv.fr/sites/default/files/2025-10/Description%20des%20bases%20de%20donn%C3%A9es%20annuelles_0.pdf",
+  "files": [
+    {
+      "path": "data/caract_2024.csv",
+      "resource_url": "https://www.data.gouv.fr/api/1/datasets/r/83f0fb0e-e0ef-47fe-93dd-9aaee851674a",
+      "resource_id": "83f0fb0e-e0ef-47fe-93dd-9aaee851674a",
+      "sha256": "45a69360aeb566f9065e079c5e9840fb1068e71cd4e6fcc34cb9fdcaff04b391",
+      "bytes": 6538156,
+      "original_download_date": null,
+      "original_download_date_note": "inconnue",
+      "official_resource_updated": "2025-10-21",
+      "verified_at_utc": "2026-11-04T17:33:51.755620+00:00",
+      "remote_sha256": "45a69360aeb566f9065e079c5e9840fb1068e71cd4e6fcc34cb9fdcaff04b391",
+      "remote_bytes": 6538156,
+      "byte_identity_verified": true,
+      "verification_note": "Downloaded official bytes; SHA-256 compared with unchanged local file."
+    },
+    {
+      "path": "data/lieux_2024.csv",
+      "resource_url": "https://www.data.gouv.fr/api/1/datasets/r/228b3cda-fdfb-4677-bd54-ab2107028d2d",
+      "resource_id": "228b3cda-fdfb-4677-bd54-ab2107028d2d",
+      "sha256": "a500a44b4efdb18f80de31c2ebde48c682b050667b7b1348671caeec736c8f09",
+      "bytes": 7070795,
+      "original_download_date": null,
+      "original_download_date_note": "inconnue",
+      "official_resource_updated": "2025-10-21",
+      "verified_at_utc": "2026-11-04T17:33:51.775635+00:00",
+      "remote_sha256": "a500a44b4efdb18f80de31c2ebde48c682b050667b7b1348671caeec736c8f09",
+      "remote_bytes": 7070795,
+      "byte_identity_verified": true,
+      "verification_note": "Downloaded official bytes; SHA-256 compared with unchanged local file."
+    }
+  ]
+}

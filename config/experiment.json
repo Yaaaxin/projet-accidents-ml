@@ -1,0 +1,11 @@
+{
+  "random_seed": 42,
+  "geographic_selection_seed": 20261104,
+  "model_seed": 20261104,
+  "bootstrap_seed": 20261105,
+  "test_fraction": 0.2,
+  "bootstrap_replicates": 1000,
+  "held_out_departments": ["07", "08", "27", "29", "30", "32", "46", "51", "61", "62", "63", "66", "67", "73", "79", "80", "85", "89", "92", "94", "975", "986"],
+  "logistic": {"C": 1.0, "max_iter": 3000, "tol": 0.000001},
+  "forest": {"n_estimators": 300, "max_depth": 18, "min_samples_leaf": 5, "max_features": "sqrt", "n_jobs": 1}
+}
