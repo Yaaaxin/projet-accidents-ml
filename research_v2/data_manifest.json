@@ -1,0 +1,383 @@
+{
+  "catalog": "https://www.data.gouv.fr/api/1/datasets/53698f4ca3a729239d2036df/",
+  "license_catalog": "fr-lo",
+  "original_download_date_coursework": "inconnue",
+  "files": [
+    {
+      "year": 2019,
+      "table": "caracteristiques",
+      "resource_id": "e22ba475-45a3-46ac-a0f7-9ca9ed1e283a",
+      "url": "https://static.data.gouv.fr/resources/base-de-donnees-accidents-corporels-de-la-circulation/20201105-104400/caracteristiques-2019.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "c1008e98ae4d6433cc79b16a5dbf95ffed116d55"
+      },
+      "catalog_size": 6998722,
+      "resource_modified": "2020-11-05T10:44:06.669000+00:00",
+      "path": "data/raw/research_v2/caracteristiques-2019.csv",
+      "downloaded_utc": "2026-11-05T08:46:00.903560+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "501e5e520af20555b46d8191874ba0cda78cea9cdf6506eae72857ad21cad4d4",
+      "bytes": 6998722
+    },
+    {
+      "year": 2019,
+      "table": "lieux",
+      "resource_id": "2ad65965-36a1-4452-9c08-61a6c874e3e6",
+      "url": "https://static.data.gouv.fr/resources/base-de-donnees-accidents-corporels-de-la-circulation/20201105-104338/lieux-2019.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "bab1d2f6a2799a24fd59bbc29b2bae4d6783a81a"
+      },
+      "catalog_size": 5390071,
+      "resource_modified": "2020-11-05T10:43:45.165000+00:00",
+      "path": "data/raw/research_v2/lieux-2019.csv",
+      "downloaded_utc": "2026-11-05T08:46:01.848286+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "2e39d84e99c2eee776f98ac6a9dbb124f0083252a64329d3f9da1a01954ceab9",
+      "bytes": 5390071
+    },
+    {
+      "year": 2019,
+      "table": "usagers",
+      "resource_id": "36b1b7b3-84b4-4901-9163-59ae8a9e3028",
+      "url": "https://static.data.gouv.fr/resources/base-de-donnees-accidents-corporels-de-la-circulation/20201105-104232/usagers-2019.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "8fba99e9246ee57454e726013ec4f1895831f6c3"
+      },
+      "catalog_size": 12454879,
+      "resource_modified": "2020-11-05T10:42:42.234000+00:00",
+      "path": "data/raw/research_v2/usagers-2019.csv",
+      "downloaded_utc": "2026-11-05T08:46:02.340542+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "43e3fa9c6a51d3c964985b2e086df91bc5474b205837c4b64b835083f1349f1a",
+      "bytes": 12454879
+    },
+    {
+      "year": 2020,
+      "table": "caracteristiques",
+      "resource_id": "07a88205-83c1-4123-a993-cba5331e8ae0",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2019/20211110-111202/caracteristiques-2020.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "aecac31214d34667a7a2c8ab179fbd25d1fe0794"
+      },
+      "catalog_size": 5655584,
+      "resource_modified": "2021-11-10T11:12:08.960000+00:00",
+      "path": "data/raw/research_v2/caracteristiques-2020.csv",
+      "downloaded_utc": "2026-11-05T08:46:02.833463+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "5162035d7933b3e9e94bf16d9af1bf26e98513f3e09ca4b4514b5893f38a43ee",
+      "bytes": 5655584
+    },
+    {
+      "year": 2020,
+      "table": "lieux",
+      "resource_id": "e85c41f7-d4ea-4faf-877f-ab69a620ce21",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2019/20211110-111603/lieux-2020.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "73a8a21443641b919e8af2489e27dca714f60daa"
+      },
+      "catalog_size": 4521088,
+      "resource_modified": "2021-11-10T11:16:08.474000+00:00",
+      "path": "data/raw/research_v2/lieux-2020.csv",
+      "downloaded_utc": "2026-11-05T08:46:03.227221+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "2e1c8408f80edeacfe61ceba06094c6652bebcd91ca51b917ee79a03b0fd0785",
+      "bytes": 4521088
+    },
+    {
+      "year": 2020,
+      "table": "usagers",
+      "resource_id": "78c45763-d170-4d51-a881-e3147802d7ee",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2019/20211110-111817/usagers-2020.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "2c99198f42ade793dac840cad965a563f984988c"
+      },
+      "catalog_size": 10054646,
+      "resource_modified": "2021-11-10T11:18:20.443000+00:00",
+      "path": "data/raw/research_v2/usagers-2020.csv",
+      "downloaded_utc": "2026-11-05T08:46:03.957811+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "083adb9f2658ffca92c8348f9db34234aab777cb6c897c3a2539a64b889bca8e",
+      "bytes": 10054646
+    },
+    {
+      "year": 2021,
+      "table": "caracteristiques",
+      "resource_id": "85cfdc0c-23e4-4674-9bcd-79a970d7269b",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2020/20221024-113743/carcteristiques-2021.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "e0a7eec845e634e314c1f5d656842c1bdba748db"
+      },
+      "catalog_size": 7045926,
+      "resource_modified": "2022-10-24T11:38:45.420000+00:00",
+      "path": "data/raw/research_v2/caracteristiques-2021.csv",
+      "downloaded_utc": "2026-11-05T08:46:04.479007+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "2af1ce3b896ccce9645836eba43a01b4430edaaa984cd1d5a5f099dc8df95b40",
+      "bytes": 7045926
+    },
+    {
+      "year": 2021,
+      "table": "lieux",
+      "resource_id": "8a4935aa-38cd-43af-bf10-0209d6d17434",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2020/20221024-113901/lieux-2021.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "d9274db6f788afd8e78ee366be22a3134dbc591c"
+      },
+      "catalog_size": 5771984,
+      "resource_modified": "2022-10-24T11:39:15.375000+00:00",
+      "path": "data/raw/research_v2/lieux-2021.csv",
+      "downloaded_utc": "2026-11-05T08:46:04.786308+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "b0afe542e300e5fce28275302a3aca7b9f7c0d97fee3de59d346148c7885fd05",
+      "bytes": 5771984
+    },
+    {
+      "year": 2021,
+      "table": "usagers",
+      "resource_id": "ba5a1956-7e82-41b7-a602-89d7dd484d7a",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2022/20231009-140337/usagers-2021.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "9c538d2c236432e16b0658e533f171ef25518444"
+      },
+      "catalog_size": 13028412,
+      "resource_modified": "2023-10-09T14:03:43.114000+00:00",
+      "path": "data/raw/research_v2/usagers-2021.csv",
+      "downloaded_utc": "2026-11-05T08:46:05.259304+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "b5f2d7c269cdfda657a1516c90680a237e3a5f62d200c698c6d1e0415490563a",
+      "bytes": 13028412
+    },
+    {
+      "year": 2022,
+      "table": "caracteristiques",
+      "resource_id": "5fc299c0-4598-4c29-b74c-6a67b0cc27e7",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2021/20231005-093927/carcteristiques-2022.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "494fd2adbc676a35b565583f284f32ee55baeeae"
+      },
+      "catalog_size": 6884406,
+      "resource_modified": "2023-10-05T09:39:41.721000+00:00",
+      "path": "data/raw/research_v2/caracteristiques-2022.csv",
+      "downloaded_utc": "2026-11-05T08:46:05.614980+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "0b6e3b67192729b117697fd598a271b859fd5a48898bf10987eb047a0fb7ee1e",
+      "bytes": 6884406
+    },
+    {
+      "year": 2022,
+      "table": "lieux",
+      "resource_id": "a6ef711a-1f03-44cb-921a-0ce8ec975995",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2021/20231005-094112/lieux-2022.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "7e2dcda426636df97fc4c28e16d9b3df0602028f"
+      },
+      "catalog_size": 5617313,
+      "resource_modified": "2023-10-05T09:41:20.327000+00:00",
+      "path": "data/raw/research_v2/lieux-2022.csv",
+      "downloaded_utc": "2026-11-05T08:46:06.000009+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "8f7a37d8c4dcad78a7aeb03569f57103f057900df4185d019fcc2e2e477fef76",
+      "bytes": 5617313
+    },
+    {
+      "year": 2022,
+      "table": "usagers",
+      "resource_id": "62c20524-d442-46f5-bfd8-982c59763ec8",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2021/20231005-094229/usagers-2022.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "df4761c5df6837b109ce80d73014a78800871b9e"
+      },
+      "catalog_size": 13013255,
+      "resource_modified": "2025-03-26T17:02:58.944000+00:00",
+      "path": "data/raw/research_v2/usagers-2022.csv",
+      "downloaded_utc": "2026-11-05T08:46:06.451741+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "f3c5fd2875c275807a624a3569d4e779abaeea29787975a1f3379399447be112",
+      "bytes": 13013255
+    },
+    {
+      "year": 2023,
+      "table": "caracteristiques",
+      "resource_id": "104dbb32-704f-4e99-a71e-43563cb604f2",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2023/20241028-103125/caract-2023.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "953aeb0118cb6ed55d4f8e6ea831ed09e14f4ecb"
+      },
+      "catalog_size": 6591826,
+      "resource_modified": "2024-10-28T10:31:45.190000+00:00",
+      "path": "data/raw/research_v2/caracteristiques-2023.csv",
+      "downloaded_utc": "2026-11-05T08:46:07.170215+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "e6cb8685b7e144e56365bed7c542bd90a95c3512431b9ba0e62a01cfd4a87ac0",
+      "bytes": 6591826
+    },
+    {
+      "year": 2023,
+      "table": "lieux",
+      "resource_id": "8bef19bf-a5e4-46b3-b5f9-a145da4686bc",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2023/20241023-153219/lieux-2023.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "0ddcad1d5a1de09bb765bd410c0ff9d52d3a7e73"
+      },
+      "catalog_size": 7176266,
+      "resource_modified": "2024-10-23T15:32:29.599000+00:00",
+      "path": "data/raw/research_v2/lieux-2023.csv",
+      "downloaded_utc": "2026-11-05T08:46:07.692849+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "80dda3688cc0b49b160a241982c87d8afdc2ebb2fc8306fffd2e4483d2315909",
+      "bytes": 7176266
+    },
+    {
+      "year": 2023,
+      "table": "usagers",
+      "resource_id": "68848e2a-28dd-4efc-9d5f-d512f7dbe66f",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2023/20241023-153328/usagers-2023.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "b79b03cf79b11405562cd6af54b4cb65713fbaac"
+      },
+      "catalog_size": 13938227,
+      "resource_modified": "2024-10-23T15:33:39.692000+00:00",
+      "path": "data/raw/research_v2/usagers-2023.csv",
+      "downloaded_utc": "2026-11-05T08:46:08.281495+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "d309a59f0baff86cf3f082db9711e61690d23ea82ec8ebafcad7ab4c5e6b59b9",
+      "bytes": 13938227
+    },
+    {
+      "year": 2024,
+      "table": "caracteristiques",
+      "resource_id": "83f0fb0e-e0ef-47fe-93dd-9aaee851674a",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2024/20251021-115900/caract-2024.csv",
+      "catalog_checksum": null,
+      "catalog_size": 6538156,
+      "resource_modified": "2025-10-21T11:59:01.081000+00:00",
+      "path": "data/raw/research_v2/caracteristiques-2024.csv",
+      "downloaded_utc": "2026-11-05T08:46:08.651334+00:00",
+      "catalog_checksum_verified": false,
+      "sha256": "45a69360aeb566f9065e079c5e9840fb1068e71cd4e6fcc34cb9fdcaff04b391",
+      "bytes": 6538156
+    },
+    {
+      "year": 2024,
+      "table": "lieux",
+      "resource_id": "228b3cda-fdfb-4677-bd54-ab2107028d2d",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2024/20251021-115812/lieux-2024.csv",
+      "catalog_checksum": null,
+      "catalog_size": 7070795,
+      "resource_modified": "2025-10-21T11:58:13.699000+00:00",
+      "path": "data/raw/research_v2/lieux-2024.csv",
+      "downloaded_utc": "2026-11-05T08:46:09.022312+00:00",
+      "catalog_checksum_verified": false,
+      "sha256": "a500a44b4efdb18f80de31c2ebde48c682b050667b7b1348671caeec736c8f09",
+      "bytes": 7070795
+    },
+    {
+      "year": 2024,
+      "table": "usagers",
+      "resource_id": "f57b1f58-386d-4048-8f78-2ebe435df868",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2024/20251021-115506/usagers-2024.csv",
+      "catalog_checksum": null,
+      "catalog_size": 13843733,
+      "resource_modified": "2025-10-21T11:56:56.552000+00:00",
+      "path": "data/raw/research_v2/usagers-2024.csv",
+      "downloaded_utc": "2026-11-05T08:46:09.462523+00:00",
+      "catalog_checksum_verified": false,
+      "sha256": "4e05cea88d5aa04a16092335310d4a5591e11802a94aaeeff75c6697dfaab5a0",
+      "bytes": 13843733
+    },
+    {
+      "year": 2025,
+      "table": "caracteristiques",
+      "resource_id": "e5a1c21d-17cb-4ee0-b85f-8e34aba4d309",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2025/20261030-141517/caract-2025.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "0e55b17bab4305d2de9dd76d5a7791f7ebfd9db4"
+      },
+      "catalog_size": 6622493,
+      "resource_modified": "2026-10-30T14:15:19.728000+00:00",
+      "path": "data/raw/research_v2/caracteristiques-2025.csv",
+      "downloaded_utc": "2026-11-05T08:46:09.985302+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "2e2451b411ba40d05ff1cd455b63619b54f7356b7e8b543af97a004b7f3dcdf7",
+      "bytes": 6622493
+    },
+    {
+      "year": 2025,
+      "table": "lieux",
+      "resource_id": "29db11b7-dad2-480f-943d-725ffdeb9a27",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2025/20261030-141502/lieux-2025.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "fce632f45e3271a5dec248eeabcdc04c8ef7f449"
+      },
+      "catalog_size": 7260013,
+      "resource_modified": "2026-10-30T14:15:03.696000+00:00",
+      "path": "data/raw/research_v2/lieux-2025.csv",
+      "downloaded_utc": "2026-11-05T08:46:10.479036+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "808f50ea1f2b6f877d9c4b500552855cb3f1e0da24bc83d1a7241187bf851fce",
+      "bytes": 7260013
+    },
+    {
+      "year": 2025,
+      "table": "usagers",
+      "resource_id": "513b5a4a-20cc-4ee2-a0c8-5e5a82ad69a4",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2025/20261030-141441/usagers-2025.csv",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "43c17f096ae1ea50c9f8378d5dff7365c651b900"
+      },
+      "catalog_size": 13967977,
+      "resource_modified": "2026-10-30T14:14:45.495000+00:00",
+      "path": "data/raw/research_v2/usagers-2025.csv",
+      "downloaded_utc": "2026-11-05T08:46:11.236921+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "91dc51b6dc5b0fd99b70776f2b77b627bd41a896584720923fcbe198d526e121",
+      "bytes": 13967977
+    },
+    {
+      "table": "dictionary",
+      "resource_id": "8ef4c2a3-91a0-4d98-ae3a-989bde87b62a",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2025/20261030-133723/description-des-bases-de-donnees-annuelles.pdf",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "d169d68fe3c709d931db6449811236b17c2d209e"
+      },
+      "path": "data/raw/research_v2/dictionary-8ef4c2a3-91a0-4d98-ae3a-989bde87b62a.pdf",
+      "downloaded_utc": "2026-11-05T08:46:11.469638+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "35865bb84092d08a0e95a4e1aecc7357a8a489bc21a9249e3616f49b2a8460e0",
+      "bytes": 455084
+    },
+    {
+      "table": "dictionary",
+      "resource_id": "21e46f4e-fa29-40bb-9ec8-905e41e041aa",
+      "url": "https://static.data.gouv.fr/resources/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2019/20211110-111116/description-des-bases-de-donnees-onisr-annees-2005-a-2020.pdf",
+      "catalog_checksum": {
+        "type": "sha1",
+        "value": "e42a96a51b41cecb16084f9cf3a763c8071df107"
+      },
+      "path": "data/raw/research_v2/dictionary-21e46f4e-fa29-40bb-9ec8-905e41e041aa.pdf",
+      "downloaded_utc": "2026-11-05T08:46:11.649497+00:00",
+      "catalog_checksum_verified": true,
+      "sha256": "bf31dbbb2a65890717b9231c67edb5d520196ef7c5402d8823cff143b7f85e99",
+      "bytes": 86850
+    }
+  ]
+}
