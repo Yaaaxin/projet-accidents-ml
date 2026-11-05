@@ -21,6 +21,19 @@ La correction estime le rapport sur `tuning` et le pool cible d'adaptation. `tun
 
 Le chiffre 2025 de 0,887 ne doit plus être utilisé comme résultat de la baseline pondérée. La correction augmente la couverture de 0,0161 et la taille de 0,0190. Elle ne restaure aucune couverture de la classe mortelle.
 
+### Effet du référentiel, à environnement constant
+
+Une analyse de clôture réutilise exactement les probabilités mises en cache par l'audit. Dans Python 3.14.3, le même prétraitement estime successivement le rapport avec `fit` puis avec `tuning`; aucun prédicteur ni aucune probabilité n'est réajusté. Les poids `tuning` reproduisent bit à bit ceux de l'audit publié.
+
+| Période | Mesure | `fit` publié, Python 3.13 | `fit`, Python 3.14 et prédictions audit | `tuning`, mêmes prédictions | Effet `tuning − fit` | Écart logiciel/compatibilité sur `fit` |
+|---|---|---:|---:|---:|---:|---:|
+| 2022–2024 | Couverture | 0,896619 | 0,896680 | 0,909775 | **+0,013094** | +0,000061 |
+| 2022–2024 | Taille | 0,942108 | 0,942252 | 0,958541 | **+0,016290** | +0,000143 |
+| 2025 | Couverture | 0,887035 | 0,887081 | 0,903163 | **+0,016082** | +0,000047 |
+| 2025 | Taille | 0,929887 | 0,929765 | 0,948848 | **+0,019083** | −0,000122 |
+
+La quasi-totalité de la correction vient donc du choix de la distribution source, pas du changement de versions. La colonne « logiciel/compatibilité » combine les différences de Python, NumPy, Pandas, scikit-learn et l'adaptation des colonnes texte à Pandas 3 ; elle ne permet pas d'attribuer un effet à une bibliothèque particulière. La couverture mortelle vaut zéro dans toutes ces variantes. Les 24 comparaisons appariées figurent dans `tables/density_reference_paired.csv`.
+
 ## 2. Le zéro de couverture pooled n'est pas créé par le transfert
 
 Le contrôle de même domaine calibre sur `conformal` et teste sur `tuning`, deux sous-échantillons indépendants de la même année source. Sa couverture moyenne vaut 0,9004 en développement et 0,9035 dans les scénarios associés à 2025, mais sa couverture mortelle vaut 0 dans les deux cas. La source pooled sur les domaines cibles donne également une couverture mortelle nulle.
@@ -123,14 +136,17 @@ Les couvertures départementales reposent souvent sur peu de décès test. Les t
 ## Reproduction et preuves
 
 ```bash
-python -m unittest discover -s tests -v
-python -m research_v2.audit development
-python -m research_v2.audit_simulation
+py -3.14 -m venv .venv-audit
+.venv-audit\Scripts\python -m pip install -r research_v2\requirements-audit.txt
+.venv-audit\Scripts\python -m unittest discover -s tests -v
+.venv-audit\Scripts\python -m research_v2.audit development
+.venv-audit\Scripts\python -m research_v2.audit_simulation
 # Vérifier research_v2/audit_freeze.json avant toute ouverture 2025.
-python -m research_v2.audit corrected_2025
-python -m research_v2.audit_report
-python -m research_v2.audit_pack pack
-python -m research_v2.audit_validate
+.venv-audit\Scripts\python -m research_v2.audit corrected_2025
+.venv-audit\Scripts\python -m research_v2.density_reference
+.venv-audit\Scripts\python -m research_v2.audit_report
+.venv-audit\Scripts\python -m research_v2.audit_pack pack
+.venv-audit\Scripts\python -m research_v2.audit_validate
 ```
 
-Les résultats détaillés sont dans `development/`, `corrected_2025/` et `simulation/`. Les grands CSV sont compressés sans perte ; `packed_manifest.json` donne le SHA-256 de chaque archive et du contenu décompressé. Les tableaux compacts sont dans `tables/`. Les checkpoints, données brutes, étiquettes acquises par identifiant et prédictions individuelles restent exclus du dépôt.
+Les environnements original et d'audit sont documentés dans [`environments.md`](../../environments.md). Les résultats détaillés sont dans `development/`, `corrected_2025/` et `simulation/`. Les grands CSV sont compressés sans perte ; `packed_manifest.json` donne le SHA-256 de chaque archive et du contenu décompressé. Les tableaux compacts et la comparaison de densités sont dans `tables/`. Les checkpoints, données brutes, étiquettes acquises par identifiant et prédictions individuelles restent exclus du dépôt.

@@ -2,6 +2,8 @@
 import json
 import gzip
 import hashlib
+import importlib.metadata
+import platform
 
 import pandas as pd
 
@@ -63,6 +65,25 @@ def run():
     checks["same_local_labels_across_scopes"] = int(distinct.max()) == 1
     checks["same_domain_control_present"] = set(comparisons.phase).issubset(
         set(comparisons[comparisons.method == "same_domain_source_pooled"].phase))
+    receipt = json.loads((BASE / "environment_receipt.json").read_text(encoding="utf-8"))
+    locks = {}
+    for name, filename in [("research_v2", "requirements-research-v2.txt"),
+                           ("audit", "requirements-audit.txt")]:
+        locks[name] = dict(line.split("==", 1) for line in
+                           (BASE / filename).read_text(encoding="utf-8").splitlines()
+                           if line and not line.startswith("#"))
+    checks["dependency_locks_match_receipt"] = all(
+        locks[name] == receipt[name]["packages"] for name in locks)
+    checks["audit_runtime_matches_lock"] = (
+        platform.python_version() == receipt["audit"]["python"]
+        and all(importlib.metadata.version(package) == version
+                for package, version in locks["audit"].items()))
+    density = pd.read_csv(AUDIT_RESULTS / "tables" / "density_reference_paired.csv")
+    density_execution = json.loads((AUDIT_RESULTS / "density_reference_execution.json").read_text(encoding="utf-8"))
+    checks["density_reference_is_paired"] = (
+        len(density) == 48
+        and density.groupby(["year", "split", "model"]).reference_source.nunique().eq(2).all()
+        and density_execution["tuning_matches_published_audit"] is True)
     if (AUDIT_RESULTS / "packed_manifest.json").exists():
         from .audit_pack import verify
         verify()

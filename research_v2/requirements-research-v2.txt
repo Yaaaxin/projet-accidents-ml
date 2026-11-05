@@ -1,0 +1,10 @@
+# Environnement ayant produit les résultats research-v2 originaux : Python 3.13.5
+numpy==2.1.3
+pandas==2.2.3
+scipy==1.15.3
+scikit-learn==1.6.1
+threadpoolctl==3.5.0
+matplotlib==3.10.0
+nbformat==5.10.4
+nbclient==0.10.2
+ipykernel==6.29.5

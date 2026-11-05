@@ -1,0 +1,7 @@
+# Environnement ayant produit l'audit : Python 3.14.3
+numpy==2.4.2
+pandas==3.0.1
+scipy==1.17.1
+scikit-learn==1.8.0
+threadpoolctl==3.6.0
+matplotlib==3.11.1

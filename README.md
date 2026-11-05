@@ -6,36 +6,27 @@ Projet de cours de **M1 mathématiques** réalisé par **[Yaaaxin](https://githu
 
 L'étude combine des méthodes existantes de prédiction conforme, une validation spatio-temporelle et une hypothèse d'allocation. Elle ne revendique pas d'innovation algorithmique. Elle classe le caractère mortel **parmi les accidents corporels déjà enregistrés** ; elle ne prédit ni la survenue d'un accident ni une cause de décès.
 
-## Résultat principal
+## Trois résultats
 
-Le protocole utilise BAAC 2019–2024 pour la validation et le choix des règles, puis BAAC 2025 comme année indépendante. Les départements cibles sont absents de l'apprentissage. Le pool d'adaptation et le test 2025 ont été séparés par identifiant avant lecture des étiquettes ; le [gel du protocole](research_v2/freeze.json) précède l'[ouverture finale](research_v2/results/final_access_receipt.json).
+Les chiffres de cette page proviennent tous de l'[audit corrigé](research_v2/results/audit/report.md). Ils moyennent les trois découpages géographiques et les deux modèles ; les méthodes locales ajoutent trois tirages de calibration. Les analyses 2025 de l'audit sont postérieures à la première publication du test.
 
-Les moyennes 2025 portent sur trois découpages géographiques et les deux modèles ; pour les allocations locales, elles incluent aussi trois tirages de calibration.
+1. **La couverture marginale masque la classe mortelle.** La calibration pooled couvre environ 90 % des accidents mais aucun décès, y compris dans le contrôle de même domaine. Le transfert n'est donc pas nécessaire pour produire ce zéro.
+2. **La correction des densités vient du changement de distribution de référence.** Avec les mêmes probabilités mises en cache et le même environnement, passer de `fit` à `tuning` augmente la couverture pondérée 2025 de `0,01608`. L'écart attribuable conjointement aux versions logicielles et au correctif de compatibilité n'est que de `0,00005`. La couverture mortelle reste nulle.
+3. **La protection régionale coûte de l'ambiguïté.** À budget 2 000, la calibration uniforme par classe atteint une couverture mortelle macro-départementale de `0,892` avec une taille de `1,522`; le croisement département × classe atteint `0,966`, mais avec une taille de `1,832`. La règle pilot–variance n'apporte pas de gain stable.
 
-| Méthode | Budget local | Couverture globale | Couverture mortelle | Taille moyenne | Ensembles singleton |
+| Méthode 2025 corrigée | Budget | Couverture | Mortelle macro-départementale | Taille | Singleton |
 |---|---:|---:|---:|---:|---:|
-| Source pooled | 0 | 0,907 | **0,000** | 0,953 | 0,953 |
-| Source pondérée corrigée | 0 | 0,903 | **0,000** | 0,949 | 0,949 |
-| Source conditionnelle à la classe | 0 | 0,910 | 0,910 | **1,524** | **0,476** |
-| Locale proportionnelle, département × classe | 2 000 | 0,904 | **0,976** | 1,812 | 0,188 |
-| Locale uniforme, département × classe | 2 000 | 0,903 | 0,969 | 1,832 | 0,168 |
-| Locale pilot–variance, département × classe | 2 000 | 0,902 | 0,966 | 1,836 | 0,164 |
+| Source pooled | 0 | 0,907 | 0,000 | 0,953 | 0,953 |
+| Source pondérée, référence `tuning` | 0 | 0,903 | 0,000 | 0,949 | 0,949 |
+| Source par classe | 0 | 0,910 | 0,907 | **1,524** | **0,476** |
+| Locale uniforme par classe | 2 000 | 0,933 | 0,892 | **1,522** | **0,478** |
+| Locale proportionnelle, département × classe | 2 000 | 0,904 | **0,984** | 1,812 | 0,188 |
+| Locale uniforme, département × classe | 2 000 | 0,903 | 0,966 | 1,832 | 0,168 |
+| Locale pilot–variance, département × classe | 2 000 | 0,902 | 0,965 | 1,836 | 0,164 |
 
-La couverture globale masque ici une défaillance complète de la classe rare : les calibrations source pooled et pondérée ne couvrent aucun accident mortel des tests 2025. La calibration source par classe restaure une couverture mortelle proche de 90 % avec les ensembles les plus compacts parmi les méthodes qui protègent cette classe.
+![Budget, couverture régionale et taille des ensembles](research_v2/results/audit/figures/tradeoff_2025_corrected.png)
 
-Les étiquettes locales augmentent la couverture mortelle, mais les cellules département × décès restent rares. À budget 500, presque tous les seuils mortels sont infinis et les ensembles contiennent presque toujours les deux classes. À budget 2 000, ils commencent à se contracter sans devenir aussi compacts que la référence source par classe.
-
-La règle candidate pilot–variance n'a pas de bénéfice stable. Ce résultat négatif est conservé. Un [audit postérieur](research_v2/results/audit/report.md) a corrigé la baseline pondérée, ajouté les couvertures mortelles macro-départementales et comparé les granularités sur les mêmes labels. Les résultats originaux restent archivés dans le [rapport gelé](research_v2/results/report.md).
-
-![Budget, couverture et taille des ensembles](research_v2/results/figures/budget_tradeoff.png)
-
-## Amendement d'audit
-
-Les résultats 2025 avaient déjà été publiés lors de cet amendement. Le protocole et les expériences 2019–2024 ont donc été [gelés séparément](research_v2/audit_freeze.json) avant toute nouvelle exécution 2025 ; les nouvelles valeurs sont explicitement des corrections postérieures, non une seconde validation indépendante.
-
-L'audit établit trois points. Premièrement, la baseline pondérée utilisait une distribution source mal alignée : sa couverture 2025 corrigée vaut 0,903 au lieu de 0,887, mais sa couverture mortelle reste nulle. Deuxièmement, le contrôle de même domaine obtient lui aussi une couverture mortelle nulle ; ce phénomène provient de la garantie marginale pooled et de la rareté de la classe, pas nécessairement du transfert. Troisièmement, cinq labels pilot par département ne contiennent aucun décès dans 63,5 % des tirages historiques. Les calibrations département × classe gagnent en couverture régionale principalement en produisant des ensembles plus grands, souvent complets.
-
-Le [rapport d'audit](research_v2/results/audit/report.md) présente les conclusions maintenues ou modifiées, la correction du rapport de densités, les oracles historiques non déployables et la simulation séparant effet régional partagé et changement de loi conditionnelle.
+Le [rapport original](research_v2/results/report.md), son [gel](research_v2/freeze.json) et ses résultats restent inchangés. Le [protocole d'audit](research_v2/audit_protocol.md), son [gel séparé](research_v2/audit_freeze.json), la [comparaison de densités appariée](research_v2/results/audit/tables/density_reference_versions.csv) et le [rapport corrigé](research_v2/results/audit/report.md) assurent la traçabilité des corrections.
 
 ## Méthode
 
@@ -49,30 +40,31 @@ La calibration conforme utilise α=0,10. Un quantile département × classe n'es
 
 ## Reproduire
 
-Environnement de référence de research-v2 : Python 3.13.5. L'amendement d'audit a été exécuté avec Python 3.14.3, NumPy 2.4.2, Pandas 3.0.1 et scikit-learn 1.8.0. Tous les calculs sont séquentiels avec `n_jobs=1`.
+Les deux environnements sont séparés et verrouillés dans [requirements-research-v2.txt](research_v2/requirements-research-v2.txt) et [requirements-audit.txt](research_v2/requirements-audit.txt). Les versions proviennent des métadonnées des exécutions publiées ; voir [environments.md](research_v2/environments.md). Tous les calculs sont séquentiels avec `n_jobs=1`.
 
 ```bash
-python -m venv .venv
-# Windows PowerShell : .venv\Scripts\Activate.ps1
-# Linux/macOS : source .venv/bin/activate
-python -m pip install -r requirements.txt
+# research-v2 original — Python 3.13.5
+py -3.13 -m venv .venv-research-v2
+.venv-research-v2\Scripts\python -m pip install -r research_v2\requirements-research-v2.txt
+.venv-research-v2\Scripts\python -m research_v2.download
+.venv-research-v2\Scripts\python -m research_v2.data
+.venv-research-v2\Scripts\python -m research_v2.simulation
+.venv-research-v2\Scripts\python -m research_v2.run pilot
+.venv-research-v2\Scripts\python -m research_v2.run development
+.venv-research-v2\Scripts\python -m research_v2.run final
+.venv-research-v2\Scripts\python -m research_v2.report
 
-python -m research_v2.download
-python -m research_v2.data
-python -m unittest discover -s tests -v
-python -m research_v2.simulation
-python -m research_v2.run pilot
-python -m research_v2.run development
-python -m research_v2.run final
-python -m research_v2.report
-
-# Amendement postérieur à research-v2
-python -m research_v2.audit development
-python -m research_v2.audit_simulation
-python -m research_v2.audit corrected_2025
-python -m research_v2.audit_report
-python -m research_v2.audit_pack pack
-python -m research_v2.audit_validate
+# audit — Python 3.14.3, après les commandes de préparation ci-dessus
+py -3.14 -m venv .venv-audit
+.venv-audit\Scripts\python -m pip install -r research_v2\requirements-audit.txt
+.venv-audit\Scripts\python -m unittest discover -s tests -v
+.venv-audit\Scripts\python -m research_v2.audit development
+.venv-audit\Scripts\python -m research_v2.audit_simulation
+.venv-audit\Scripts\python -m research_v2.audit corrected_2025
+.venv-audit\Scripts\python -m research_v2.density_reference
+.venv-audit\Scripts\python -m research_v2.audit_report
+.venv-audit\Scripts\python -m research_v2.audit_pack pack
+.venv-audit\Scripts\python -m research_v2.audit_validate
 ```
 
 Les exécutions écrivent des checkpoints dans `research_v2/private/` afin de reprendre après interruption. Ce répertoire, les données brutes et les prédictions par accident sont exclus de Git. Les résultats publics sont agrégés. Les empreintes des entrées et sorties de référence figurent dans le manifeste, le gel et les métadonnées d'exécution.
@@ -87,6 +79,7 @@ Le notebook [03_research_v2.ipynb](notebooks/03_research_v2.ipynb) présente en 
 - [Protocole expérimental](research_v2/protocol.md), [données et intégrité](research_v2/data.md), [dérivation mathématique](research_v2/theory.md).
 - [Audit avant gel](research_v2/results/data_audit_before_freeze.json), [simulation contrôlée](research_v2/results/simulation_summary_clean.csv), [résultats régionaux 2025](research_v2/results/final/departments.csv).
 - [Amendement d'audit](research_v2/audit_protocol.md), [gel de l'amendement](research_v2/audit_freeze.json), [rapport corrigé](research_v2/results/audit/report.md) et [métriques 2025 corrigées](research_v2/results/audit/corrected_2025/metrics.csv).
+- [Environnements verrouillés](research_v2/environments.md) et [comparaison appariée des références de densité](research_v2/results/audit/tables/density_reference_versions.csv).
 
 ## Données, licence et limites
 
