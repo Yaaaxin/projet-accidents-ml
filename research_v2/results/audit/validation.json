@@ -1,0 +1,20 @@
+{
+  "checks": {
+    "fingerprint_matches_freeze": true,
+    "frozen_files_match_sha256": true,
+    "development_excludes_2025": true,
+    "corrected_phase_only_2025": true,
+    "no_historical_oracle_in_2025": true,
+    "roles_disjoint": true,
+    "geographies_disjoint": true,
+    "density_source_aligned_and_independent": true,
+    "same_local_labels_across_scopes": true,
+    "same_domain_control_present": true,
+    "dependency_locks_match_receipt": true,
+    "audit_runtime_matches_lock": true,
+    "density_reference_is_paired": true,
+    "packed_results_lossless": true
+  },
+  "development_rows": 2016,
+  "corrected_2025_rows": 510
+}

@@ -1,0 +1,33 @@
+{
+  "frozen_utc": "2026-11-05T14:30:09.8060265+00:00",
+  "final_labels_opened": false,
+  "decision": {
+    "alpha": 0.1,
+    "models": ["logistic", "hist_gradient_boosting"],
+    "budgets": [500, 1000, 2000],
+    "policies": ["proportional", "uniform", "pilot_variance"],
+    "geography_seeds": [17, 43, 89],
+    "calibration_seeds": [11, 29, 47],
+    "reason": "Grille réalisable dans tous les pools. Le pilot à 500 labels conserve vingt seuils fatals infinis ; 1000 et 2000 étudient la transition. Les trois allocations sont conservées après validation 2019-2024, sans sélection selon 2025.",
+    "selection_from_2025": false
+  },
+  "fingerprint": {
+    "config.json": "2c947ab87299757416b638dd6e37d29b6e1ff2c04a36f28a11f25288679836b9",
+    "partitions.json": "4246d255bb20793bc93e5574f00ff9c08a0916a98db497065522a9b50acb03bc",
+    "data_manifest.json": "539cbe1946c2b2e395ceef106f475c0ec4d1c9695eb96afc98ba286cd212a107",
+    "data.py": "134ae5412f09c9cd36d29e15a7d79c7164e5f4ab3dc46c2e5e037645cb48c93f",
+    "models.py": "2b898bc260f27e695088e06b34409330a99fa5e85708f28cae2f24466c3e316b",
+    "metrics.py": "37744df3b25a32254674b2bc8fdbb37cd6dc627cb27f1bd902780cfe7edecde3",
+    "conformal.py": "533301a370a5326c791a64a13941a74b4edb8b66242cb339e0c02a28222b0f49",
+    "run.py": "04335d4f48c22553cd7f6710e473fe1fc6110941127f541bcc3cff5a9cff3566"
+  },
+  "public_evidence_sha256": {
+    "protocol.md": "9baeab289f3e54cb50334e8edda61e6483336c6d4f3c27acf564d9a8d659896a",
+    "literature.md": "1459942e474a41943397ec56936a43985c3487f256102277f4cd0fccbd1673da",
+    "theory.md": "06e0922b5c4f5807cc48be0e1340ec29f06e9fc1d5f9277e220a9a737e9c376c",
+    "pilot_metrics.csv": "63722f4f5f714cd8ae56b201459bd1ae4fa827934244d2fa14ad70f263dbeb63",
+    "development_metrics.csv": "c8e7160ef5a2b00d31b46d6774f320fbc18fe9c0863b07f61901ac7abb6c9c8d",
+    "simulation_trials.csv": "ec93f4ed644cdaca7a9f948ea0390d9b36b76c08a8537cd8f7324b5a5f5e7baf",
+    "data_audit_before_freeze.json": "fe0b18d7ff00480829090dea76bb3f352dd3c13d815c818bc0bee852f4157c3d"
+  }
+}

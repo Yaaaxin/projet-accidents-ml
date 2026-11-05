@@ -1,0 +1,64 @@
+[
+  {
+    "year": 2024,
+    "split": 17,
+    "model": "logistic",
+    "fit": {
+      "n": 193758,
+      "ids_sha256": "2a39d6805a810c2a4c014bbfb4e97010d2f95dbc98bb6df2d6777c9424520230"
+    },
+    "tuning": {
+      "n": 12064,
+      "ids_sha256": "49df65a698378b523eb8fddf91f67df0a12e3ec8a027a75627b0b7fd71279f4e"
+    },
+    "probability": {
+      "n": 11980,
+      "ids_sha256": "98322472412969b32e25df29ee9b507bad4e3223c969897aea2f30a31a686501"
+    },
+    "conformal": {
+      "n": 23814,
+      "ids_sha256": "6157efe6739259ad62ff286a0c5222aa036e9065c82a889935386c61609bdeb2"
+    },
+    "adaptation": {
+      "n": 3720,
+      "ids_sha256": "045bdf2f323bb7a988e43b2ebe9ffe925ce571a929ae01866152076be4548465"
+    },
+    "test": {
+      "n": 3823,
+      "ids_sha256": "76d8b127f16e53c62d74ee2f5c13c78ff8d551b9b014ad049c18fa3a84932029"
+    },
+    "all_roles_disjoint": true,
+    "source_target_departments_disjoint": true
+  },
+  {
+    "year": 2024,
+    "split": 17,
+    "model": "hist_gradient_boosting",
+    "fit": {
+      "n": 193758,
+      "ids_sha256": "2a39d6805a810c2a4c014bbfb4e97010d2f95dbc98bb6df2d6777c9424520230"
+    },
+    "tuning": {
+      "n": 12064,
+      "ids_sha256": "49df65a698378b523eb8fddf91f67df0a12e3ec8a027a75627b0b7fd71279f4e"
+    },
+    "probability": {
+      "n": 11980,
+      "ids_sha256": "98322472412969b32e25df29ee9b507bad4e3223c969897aea2f30a31a686501"
+    },
+    "conformal": {
+      "n": 23814,
+      "ids_sha256": "6157efe6739259ad62ff286a0c5222aa036e9065c82a889935386c61609bdeb2"
+    },
+    "adaptation": {
+      "n": 3720,
+      "ids_sha256": "045bdf2f323bb7a988e43b2ebe9ffe925ce571a929ae01866152076be4548465"
+    },
+    "test": {
+      "n": 3823,
+      "ids_sha256": "76d8b127f16e53c62d74ee2f5c13c78ff8d551b9b014ad049c18fa3a84932029"
+    },
+    "all_roles_disjoint": true,
+    "source_target_departments_disjoint": true
+  }
+]

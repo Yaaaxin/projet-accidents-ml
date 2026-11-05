@@ -1,0 +1,15 @@
+{
+  "opened_utc": "2026-11-05T16:29:39.165949+00:00",
+  "status": "correction postérieure",
+  "audit_freeze_sha256": "6252299d9859d3e5177f3f6bbe9047705927c3d895e10afc88dcc4bde34bd9e6",
+  "fingerprint": {
+    "config.json": "2c947ab87299757416b638dd6e37d29b6e1ff2c04a36f28a11f25288679836b9",
+    "audit_config.json": "e7e1e14ec8492ddce6d64c604124a8e30712bc92aabbacfc3e39294ddeb7c27c",
+    "data.py": "134ae5412f09c9cd36d29e15a7d79c7164e5f4ab3dc46c2e5e037645cb48c93f",
+    "models.py": "65d9a7ab12616319a02b4836c5a449506ce58fcecd1e90173562165804e0c434",
+    "metrics.py": "37744df3b25a32254674b2bc8fdbb37cd6dc627cb27f1bd902780cfe7edecde3",
+    "conformal.py": "533301a370a5326c791a64a13941a74b4edb8b66242cb339e0c02a28222b0f49",
+    "run.py": "04335d4f48c22553cd7f6710e473fe1fc6110941127f541bcc3cff5a9cff3566",
+    "audit.py": "ebb10a54a225fc1cac5fcc61050402ea4927fe711f039e372355c6d0e4689541"
+  }
+}

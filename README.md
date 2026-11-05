@@ -1,88 +1,105 @@
-# Classification du contexte d’agglomération des accidents
+# Calibration d'accidents mortels sous décalages spatio-temporels
 
-**Biais d’évaluation, dépendance aux caractéristiques routières et généralisation géographique**
+Projet de cours de **M1 mathématiques** réalisé par **[Yaaaxin](https://github.com/Yaaaxin)** et **[zhailucc](https://github.com/zhailucc)** à partir des données françaises BAAC. La branche `research-v2` prolonge le projet initial par une étude méthodologique :
 
-Projet de cours de **M1 mathématiques**, réalisé par **[Yaaaxin](https://github.com/Yaaaxin)** et **[zhailucc](https://github.com/zhailucc)**, à partir des données françaises **BAAC 2024**. L’extension méthodologique examine l’unité statistique, les variables routières et la validité d’une évaluation sur des départements absents de l’apprentissage. Elle ne revendique pas d’innovation algorithmique.
+> Comment répartir un budget limité d'étiquettes locales, après transfert vers une nouvelle année et de nouveaux départements, pour couvrir la classe mortelle et les régions sans perdre tout pouvoir discriminant ?
 
-Le modèle classe un **accident déjà enregistré** comme survenu en ou hors agglomération (`agg`). Il ne prédit ni la survenue d’un accident, ni sa gravité. `vma` désigne la limite autorisée, pas la vitesse pratiquée.
+L'étude combine des méthodes existantes de prédiction conforme, une validation spatio-temporelle et une hypothèse d'allocation. Elle ne revendique pas d'innovation algorithmique. Elle classe le caractère mortel **parmi les accidents corporels déjà enregistrés** ; elle ne prédit ni la survenue d'un accident ni une cause de décès.
+
+## Trois résultats
+
+Les chiffres de cette page proviennent tous de l'[audit corrigé](research_v2/results/audit/report.md). Ils moyennent les trois découpages géographiques et les deux modèles ; les méthodes locales ajoutent trois tirages de calibration. Les analyses 2025 de l'audit sont postérieures à la première publication du test.
+
+1. **La couverture marginale masque la classe mortelle.** La calibration pooled couvre environ 90 % des accidents mais aucun décès, y compris dans le contrôle de même domaine. Le transfert n'est donc pas nécessaire pour produire ce zéro.
+2. **La correction des densités vient du changement de distribution de référence.** Avec les mêmes probabilités mises en cache et le même environnement, passer de `fit` à `tuning` augmente la couverture pondérée 2025 de `0,01608`. L'écart attribuable conjointement aux versions logicielles et au correctif de compatibilité n'est que de `0,00005`. La couverture mortelle reste nulle.
+3. **La protection régionale coûte de l'ambiguïté.** À budget 2 000, la calibration uniforme par classe atteint une couverture mortelle macro-départementale de `0,892` avec une taille de `1,522`; le croisement département × classe atteint `0,966`, mais avec une taille de `1,832`. La règle pilot–variance n'apporte pas de gain stable.
+
+| Méthode 2025 corrigée | Budget | Couverture | Mortelle macro-départementale | Taille | Singleton |
+|---|---:|---:|---:|---:|---:|
+| Source pooled | 0 | 0,907 | 0,000 | 0,953 | 0,953 |
+| Source pondérée, référence `tuning` | 0 | 0,903 | 0,000 | 0,949 | 0,949 |
+| Source par classe | 0 | 0,910 | 0,907 | **1,524** | **0,476** |
+| Locale uniforme par classe | 2 000 | 0,933 | 0,892 | **1,522** | **0,478** |
+| Locale proportionnelle, département × classe | 2 000 | 0,904 | **0,984** | 1,812 | 0,188 |
+| Locale uniforme, département × classe | 2 000 | 0,903 | 0,966 | 1,832 | 0,168 |
+| Locale pilot–variance, département × classe | 2 000 | 0,902 | 0,965 | 1,836 | 0,164 |
+
+![Budget, couverture régionale et taille des ensembles](research_v2/results/audit/figures/tradeoff_2025_corrected.png)
+
+Le [rapport original](research_v2/results/report.md), son [gel](research_v2/freeze.json) et ses résultats restent inchangés. Le [protocole d'audit](research_v2/audit_protocol.md), son [gel séparé](research_v2/audit_freeze.json), la [comparaison de densités appariée](research_v2/results/audit/tables/density_reference_versions.csv) et le [rapport corrigé](research_v2/results/audit/report.md) assurent la traçabilité des corrections.
+
+## Méthode
+
+L'étiquette accident est construite uniquement à partir de `Usagers.grav` : au moins une personne enregistrée tuée dans les trente jours. Une gravité inconnue n'est jamais assimilée à une absence de décès. Usagers n'alimente aucune variable du prédicteur.
+
+Les variables décrivent le contexte de l'accident : temps, luminosité, atmosphère, agglomération, intersection et caractéristiques routières. Identifiants, département, adresse, coordonnées, type de collision et informations sur les victimes sont exclus du modèle. Les lignes multiples de Lieux sont agrégées à l'accident sans choisir arbitrairement la première.
+
+Deux prédicteurs fixes sont comparés : régression logistique et gradient boosting sur histogrammes. Imputation, encodage et standardisation sont ajustés dans une `Pipeline` sur l'apprentissage uniquement. Une calibration de Platt distincte produit les probabilités. Les trois situations d'accès à la cible sont : aucune donnée cible, caractéristiques cibles sans étiquette, puis 500, 1 000 ou 2 000 étiquettes locales.
+
+La calibration conforme utilise α=0,10. Un quantile département × classe n'est fini qu'à partir de neuf observations de cette classe. Le pilot de cinq labels par département est payé dans le budget et n'est pas réutilisé dans les quantiles. Les hypothèses, la dérivation du critère substitutif et ses limites sont détaillées dans [theory.md](research_v2/theory.md).
+
+## Reproduire
+
+Les deux environnements sont séparés et verrouillés dans [requirements-research-v2.txt](research_v2/requirements-research-v2.txt) et [requirements-audit.txt](research_v2/requirements-audit.txt). Les versions proviennent des métadonnées des exécutions publiées ; voir [environments.md](research_v2/environments.md). Tous les calculs sont séquentiels avec `n_jobs=1`.
+
+```bash
+# research-v2 original — Python 3.13.5
+py -3.13 -m venv .venv-research-v2
+.venv-research-v2\Scripts\python -m pip install -r research_v2\requirements-research-v2.txt
+.venv-research-v2\Scripts\python -m research_v2.download
+.venv-research-v2\Scripts\python -m research_v2.data
+.venv-research-v2\Scripts\python -m research_v2.simulation
+.venv-research-v2\Scripts\python -m research_v2.run pilot
+.venv-research-v2\Scripts\python -m research_v2.run development
+.venv-research-v2\Scripts\python -m research_v2.run final
+.venv-research-v2\Scripts\python -m research_v2.report
+
+# audit — Python 3.14.3, après les commandes de préparation ci-dessus
+py -3.14 -m venv .venv-audit
+.venv-audit\Scripts\python -m pip install -r research_v2\requirements-audit.txt
+.venv-audit\Scripts\python -m unittest discover -s tests -v
+.venv-audit\Scripts\python -m research_v2.audit development
+.venv-audit\Scripts\python -m research_v2.audit_simulation
+.venv-audit\Scripts\python -m research_v2.audit corrected_2025
+.venv-audit\Scripts\python -m research_v2.density_reference
+.venv-audit\Scripts\python -m research_v2.audit_report
+.venv-audit\Scripts\python -m research_v2.audit_pack pack
+.venv-audit\Scripts\python -m research_v2.audit_validate
+```
+
+Les exécutions écrivent des checkpoints dans `research_v2/private/` afin de reprendre après interruption. Ce répertoire, les données brutes et les prédictions par accident sont exclus de Git. Les résultats publics sont agrégés. Les empreintes des entrées et sorties de référence figurent dans le manifeste, le gel et les métadonnées d'exécution.
+
+Les grands CSV de l'amendement sont publiés en `csv.gz`. `audit_pack` vérifie que leur décompression, et la concaténation chronologique des trois partitions départementales, redonnent exactement les SHA-256 du gel.
+
+Le notebook [03_research_v2.ipynb](notebooks/03_research_v2.ipynb) présente en français le problème, le protocole et les résultats. Il lit les tableaux agrégés ; les commandes ci-dessus refont les modèles.
+
+## Documents
+
+- [Comparaison de dix publications primaires](research_v2/literature.md), avec vérification du DOI `10.1080/15389588.2025.2538725`.
+- [Protocole expérimental](research_v2/protocol.md), [données et intégrité](research_v2/data.md), [dérivation mathématique](research_v2/theory.md).
+- [Audit avant gel](research_v2/results/data_audit_before_freeze.json), [simulation contrôlée](research_v2/results/simulation_summary_clean.csv), [résultats régionaux 2025](research_v2/results/final/departments.csv).
+- [Amendement d'audit](research_v2/audit_protocol.md), [gel de l'amendement](research_v2/audit_freeze.json), [rapport corrigé](research_v2/results/audit/report.md) et [métriques 2025 corrigées](research_v2/results/audit/corrected_2025/metrics.csv).
+- [Environnements verrouillés](research_v2/environments.md) et [comparaison appariée des références de densité](research_v2/results/audit/tables/density_reference_versions.csv).
+
+## Données, licence et limites
+
+Les 21 CSV proviennent du jeu officiel [BAAC 2005–2025](https://www.data.gouv.fr/datasets/53698f4ca3a729239d2036df/), sous [Licence Ouverte 2.0](https://www.data.gouv.fr/datasets/licence-ouverte-2-0). Les données brutes ne sont pas publiées dans ce dépôt. Le [manifeste research-v2](research_v2/data_manifest.json) contient les URL, identifiants de ressource, tailles, SHA-256 et contrôles d'empreinte disponibles. La date de téléchargement des données du projet initial demeure inconnue ; celles de research-v2 sont enregistrées précisément.
+
+Les résultats 2025 décrivent une adaptation rétrospective au sein d'une même année. Ils supposent une stabilité entre pool d'adaptation et test qui n'est pas démontrée et ne garantissent pas un transfert vers 2026. Quarante-deux des 58 couples découpage–département ont moins de vingt accidents mortels dans le test ; les couvertures locales sont donc souvent imprécises. La dépendance spatiale est examinée par rééchantillonnage des départements, sans être éliminée.
+
+BAAC est une base administrative brute, avec erreurs de saisie et usagers potentiellement manquants. Les résultats ne couvrent pas les décès non enregistrés ni les accidents dont la gravité reste indéterminée. Aucune importance ou association prédictive n'est interprétée comme cause d'un accident ou d'un décès.
 
 ## Auteurs / Contributions
 
-| Auteur | Contributions établies |
+| Auteur | Contributions établies par les matériaux du dépôt |
 |---|---|
 | [Yaaaxin](https://github.com/Yaaaxin) | Coauteur du projet de cours ; création du dépôt et du commit initial. |
 | [zhailucc](https://github.com/zhailucc) | Coauteur du projet de cours et collaborateur du dépôt. |
 
-Le notebook initial ne précise pas la répartition individuelle du code et des analyses : ce travail est présenté comme une réalisation commune. L’extension méthodologique est identifiée séparément dans les fichiers et l’historique, sans réattribuer les contributions initiales.
+Le notebook initial ne documente pas une répartition individuelle plus précise. Le projet original est donc présenté comme un travail commun ; aucune attribution détaillée n'est inventée pour research-v2.
 
-## Question de recherche
+## Version initiale conservée
 
-Après séparation correcte des accidents, les performances et l’avantage éventuel de la forêt aléatoire sur la régression logistique reposent-ils surtout sur la limite de vitesse (`vma`) et la catégorie de route (`catr`) ? Ces constats persistent-ils sur des départements non vus pendant l’apprentissage ?
+Le premier sujet, « Classification du contexte d'agglomération des accidents », reste entièrement disponible : [notebook original](notebooks/01_accidents_ml.ipynb), [extension méthodologique v1](notebooks/02_methodologie.ipynb), [résultats v1](results/summary.md), [protocole v1](docs/protocol.md) et [note historique](docs/original-project.md). L'historique Git conserve le commit v1 sur `main` ; research-v2 est développé sur une branche distincte.
 
-## Résultats mesurés
-
-Une observation par accident, paramètres fixes, seuil 0,5. Le test aléatoire contient **10 881 accidents** ; le test géographique, **11 160**. Les identifiants sont disjoints entre train et test dans les deux cas ; les départements le sont également dans le second.
-
-| Test | Variables | Modèle | Balanced accuracy | Macro-F1 | ROC-AUC |
-|---|---|---|---:|---:|---:|
-| Aléatoire | Toutes | Majorité | 0,5000 | 0,3847 | 0,5000 |
-| Aléatoire | Toutes | Régression logistique | 0,9264 | 0,9304 | 0,9663 |
-| Aléatoire | Toutes | Forêt | **0,9306** | 0,9339 | 0,9711 |
-| Aléatoire | `vma + catr` | Forêt | 0,9258 | 0,9297 | 0,9581 |
-| Aléatoire | Sans `vma/catr` | Forêt | 0,7589 | 0,7687 | 0,8675 |
-| Géographique | Toutes | Majorité | 0,5000 | 0,3921 | 0,5000 |
-| Géographique | Toutes | Régression logistique | 0,9450 | 0,9488 | 0,9760 |
-| Géographique | Toutes | Forêt | **0,9474** | 0,9513 | 0,9788 |
-| Géographique | `vma + catr` | Forêt | 0,9435 | 0,9477 | 0,9649 |
-| Géographique | Sans `vma/catr` | Forêt | 0,7619 | 0,7713 | 0,8708 |
-
-Les **18 évaluations**, leurs intervalles de confiance et les matrices de confusion figurent dans [le rapport détaillé](results/summary.md), [metrics.csv](results/metrics.csv) et [confusion_matrices.json](results/confusion_matrices.json). Aucun avertissement de convergence ; la régression logistique utilise au plus 289 des 3 000 itérations autorisées.
-
-![Performance par accident et intervalles à 95 %](results/figures/performance.png)
-
-### Interprétation
-
-- **Dépendance forte aux caractéristiques routières.** Retirer `vma/catr` diminue la balanced accuracy de la forêt de **0,1716** sur le test aléatoire (IC 95 % **[0,1620 ; 0,1807]**) et de **0,1855** sur le test géographique (**[0,1766 ; 0,1943]**). Les autres variables conservent une information prédictive, mais les deux variables routières suffisent déjà à approcher le score complet.
-- **Avantage de la forêt limité.** Avec toutes les variables, son gain de balanced accuracy sur la logistique vaut **0,0042 [0,0015 ; 0,0068]** en aléatoire. En géographique, le gain **0,0024 [−0,0005 ; 0,0053]** reste incertain. Son gain de ROC-AUC y est positif : **0,0028 [0,0009 ; 0,0047]**. Le classement des modèles dépend donc de la métrique.
-- **Pas de dégradation sur les départements choisis.** Les scores géographiques sont ici plus élevés. Les deux tests portent sur des ensembles différents, avec respectivement 62,51 % et 64,49 % d’accidents en agglomération ; ce n’est pas la preuve que le transfert améliore un modèle ni qu’il réussira sur tout autre territoire.
-- **Une association n’est pas une fuite en soi.** `vma/catr` décrivent fortement le contexte d’agglomération. L’ablation mesure cette dépendance ; elle n’établit ni une fuite de cible, ni une cause d’accident. La fuite documentée dans le projet initial concerne le partage des mêmes accidents entre apprentissage et test.
-
-Les IC proviennent de **1 000 bootstrap appariés au niveau accident**, à modèles fixés. Ils ne couvrent pas l’incertitude de réentraînement ou du choix des départements, et n’éliminent pas la dépendance spatiale. Les comparaisons sont exploratoires, sans correction pour multiplicité.
-
-## Méthode et corrections
-
-Les **54 402 accidents** de `caract` correspondent à **70 248 descriptions** dans `lieux`. Pour 15 645 accidents, plusieurs lignes existent : prendre la première imposerait un choix sans justification. Les catégories routières sont agrégées en proportions ; les limites de vitesse et nombres de voies sont résumés par médiane, minimum, maximum et proportion manquante. Chaque accident a ainsi exactement le même poids. Cette représentation conserve les différences entre lieux sans prétendre reconstruire le lieu principal.
-
-Les codes inconnus et valeurs hors domaine sont traités explicitement ; les zéros valides sont préservés. Les catégories sont encodées sans ordre artificiel et les heures/dates par composantes cycliques et jour de semaine. Imputation, encodage et mise à l’échelle sont ajustés **sur le train uniquement, dans des Pipeline**. `agg` reste la cible, `Num_Acc` un identifiant, et `dep` sert exclusivement au découpage territorial.
-
-Les graines, les 22 départements réservés et les hyperparamètres ont été fixés avant les expériences, sans sélection selon les scores. Aucun réglage d’hyperparamètres n’a été réalisé. Voir [le protocole](docs/protocol.md), [la configuration](config/experiment.json) et [les données](data/README.md).
-
-## Reproduire
-
-Depuis la racine du dépôt, avec Python **3.13** (exécution de référence : **3.13.5**, Windows) :
-
-```bash
-python -m venv .venv
-# Windows PowerShell : .venv\Scripts\Activate.ps1
-# Linux/macOS : source .venv/bin/activate
-python -m pip install -r requirements.txt
-python -m src.download_data
-python -m unittest discover -s tests -v
-python -m src.experiment
-python -m src.report
-```
-
-Les versions directes sont fixées dans `requirements.txt` ; les versions effectivement utilisées et les hachages sont dans [run_metadata.json](results/run_metadata.json). L’environnement local `.conda` n’est pas nécessaire. L’expérience utilise un seul thread de forêt pour rester compatible avec les restrictions de files parallèles Windows. Les commandes ne dépendent pas du répertoire personnel de l’auteur.
-
-Validation : **8 tests réussis**, 18 jeux de métriques et matrices recalculés depuis les prédictions, hachages des sources/données contrôlés. Les 6 cellules de code du notebook méthodologique ont été exécutées séquentiellement avec IPython ; le lancement d’un noyau Jupyter séparé reste non validé dans l’environnement Windows utilisé, en raison des permissions de son fichier de connexion.
-
-Pour lire la démarche et examiner les tableaux, ouvrir [02_methodologie.ipynb](notebooks/02_methodologie.ipynb) dans un éditeur Jupyter. Ses cellules lisent les résultats agrégés ; les commandes ci-dessus refont les entraînements. Une nouvelle exécution remplace les résultats du même répertoire ; `python -m src.experiment --output .local/reproduction` permet une comparaison séparée.
-
-## Travail initial, données et limites
-
-- [01_accidents_ml.ipynb](notebooks/01_accidents_ml.ipynb) conserve le code initial du cours, clairement marqué comme archive. [La note historique](docs/original-project.md) détaille les corrections et les scores anciens, **non validés** : 5 050 accidents partagés, soit 36,08 % des lignes test provenant d’accidents déjà vus. La différence entre anciens et nouveaux scores ne mesure pas isolément l’effet de ce biais.
-- [BAAC 2024, ONISR / Ministère de l’intérieur](https://www.data.gouv.fr/datasets/53698f4ca3a729239d2036df), Licence Ouverte / Open Licence. Les deux fichiers locaux sont identiques aux ressources officielles selon SHA-256 ; téléchargement initial de date inconnue. Les données brutes, adresses, coordonnées et prédictions individuelles restent hors du dépôt. Voir [les sources et conditions](data/README.md).
-- Une année et un seul ensemble de départements réservés : pas de validation temporelle ni de garantie nationale. L’enregistrement des lieux multiples et les erreurs de saisie peuvent affecter les résultats. L’agrégation perd les associations entre caractéristiques d’un même lieu. Les seuils de plausibilité et le codage cyclique du jour du mois sont des choix de modélisation à discuter, pas des corrections officielles.
-- Sans observations hors accident ni mesure d’exposition au trafic, aucune conclusion sur la probabilité ou les causes d’un accident n’est permise. L’utilisation est descriptive et pédagogique.
-
-La licence des données ne s’étend pas automatiquement au code et aux documents du projet ; aucune licence de code n’est attribuée unilatéralement aux contributions communes.
+La licence des données ne s'étend pas automatiquement au code et aux documents du projet ; aucune licence de code n'est attribuée unilatéralement aux contributions communes.

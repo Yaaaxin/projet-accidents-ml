@@ -27,3 +27,4 @@ data/download_receipt.json
 results/private/
 *.joblib
 *.pkl
+research_v2/private/

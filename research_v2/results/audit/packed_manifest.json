@@ -1,0 +1,113 @@
+{
+  "format": 1,
+  "compression": "gzip, niveau 9, mtime=0",
+  "lossless": true,
+  "files": {
+    "development/allocation.csv": {
+      "uncompressed_bytes": 2465517,
+      "uncompressed_sha256": "523d9258039126c5d369ea48d174ea765e99673fb55cd5de9a876cc5dd12ca65",
+      "assembly": "gzip",
+      "storage": [
+        {
+          "path": "development/allocation.csv.gz",
+          "bytes": 95586,
+          "sha256": "dd57aac4c70b93567667dffa56e1e949f2b956c6dd76aef6e1c1db7909cb4730"
+        }
+      ]
+    },
+    "development/cells.csv": {
+      "uncompressed_bytes": 12682185,
+      "uncompressed_sha256": "ff6e0fe7111d154b93b9fd8c9ee5ed46fe8a083f498290b2a1db759f5b58dcd7",
+      "assembly": "gzip",
+      "storage": [
+        {
+          "path": "development/cells.csv.gz",
+          "bytes": 329892,
+          "sha256": "b57d42b354bfd562e001953197205e792a479cec85972189e3139865a710dd42"
+        }
+      ]
+    },
+    "development/metrics.csv": {
+      "uncompressed_bytes": 1230673,
+      "uncompressed_sha256": "6f7fddc75349c065e29faea3a106bb0378e4f09d12d8d973241feafc7141b78b",
+      "assembly": "gzip",
+      "storage": [
+        {
+          "path": "development/metrics.csv.gz",
+          "bytes": 225010,
+          "sha256": "81fd0a1352ec8ac47021a42fa13aa8439e6e1b9b6304a6c6c8fd4ecc24fba44e"
+        }
+      ]
+    },
+    "corrected_2025/cells.csv": {
+      "uncompressed_bytes": 1918680,
+      "uncompressed_sha256": "84c8965ce012e323b929d6e2cb5cc3e92bd3328d6029d4579ad6666e3a8f23f7",
+      "assembly": "gzip",
+      "storage": [
+        {
+          "path": "corrected_2025/cells.csv.gz",
+          "bytes": 48408,
+          "sha256": "fd98ce69999e9c9c8f650ec861ff137d1fb4a464585fe42ae8d0fe719fda8a53"
+        }
+      ]
+    },
+    "corrected_2025/departments.csv": {
+      "uncompressed_bytes": 3490851,
+      "uncompressed_sha256": "a5b86176aea66c0cc64d2275ef1111cf18f0cd4cf26cd79823082acf6ce918c5",
+      "assembly": "gzip",
+      "storage": [
+        {
+          "path": "corrected_2025/departments.csv.gz",
+          "bytes": 253354,
+          "sha256": "01de39ea484e8d8accfa5a835844b6fb9c399eccc69895cd1f3e0a8773b5698d"
+        }
+      ]
+    },
+    "simulation/pilot_diagnostics.csv": {
+      "uncompressed_bytes": 1629797,
+      "uncompressed_sha256": "0e5d246a82002c1b00036dcf5cb6919aad00d1d1a53a95fbf5f1ea57bf6630ca",
+      "assembly": "gzip",
+      "storage": [
+        {
+          "path": "simulation/pilot_diagnostics.csv.gz",
+          "bytes": 200836,
+          "sha256": "97c1360cef8ee02b8a0378f6eb3cdfc3b7f97b510e1d9e1f106fcf40dc9bc27b"
+        }
+      ]
+    },
+    "simulation/trials.csv": {
+      "uncompressed_bytes": 4596154,
+      "uncompressed_sha256": "5fcdeb62dad5c5a7072d461a541f9011f2d2c63913b21fdaf8f6daf2c5933d61",
+      "assembly": "gzip",
+      "storage": [
+        {
+          "path": "simulation/trials.csv.gz",
+          "bytes": 745448,
+          "sha256": "14f34e967c8c32c60497249004c1162c20eb26f94ac8d87e85eb22901889b3fd"
+        }
+      ]
+    },
+    "development/departments.csv": {
+      "uncompressed_bytes": 15255785,
+      "uncompressed_sha256": "e98a0f0dcb03363144ee8070128386677df88b5d9de614a3fc16dec633f01fbb",
+      "assembly": "headers_identiques_puis_lignes_2022_2023_2024",
+      "storage": [
+        {
+          "path": "development/departments-2022.csv.gz",
+          "bytes": 334228,
+          "sha256": "44766298ea9b7f9210096cb306d2f0dc563de58231b10fbf097da67faa75b229"
+        },
+        {
+          "path": "development/departments-2023.csv.gz",
+          "bytes": 332742,
+          "sha256": "5797d7c793f10e60f8d2c38a4e89f13c6143b9413734d1af0c0b7b4577c5c3f2"
+        },
+        {
+          "path": "development/departments-2024.csv.gz",
+          "bytes": 314082,
+          "sha256": "c2b39802d64c75554a390f67801a0cd020e241c0ab751687486372dfbe4af1b7"
+        }
+      ]
+    }
+  }
+}

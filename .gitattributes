@@ -1,3 +1,4 @@
 * text=auto eol=lf
 *.png -text
 *.pdf -text
+research_v2/results/audit/** -text whitespace=cr-at-eol

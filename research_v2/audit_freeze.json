@@ -1,0 +1,51 @@
+{
+  "created_utc": "2026-11-05T16:28:43.0717615Z",
+  "base_commit": "35234446432e71b877728ab59ed15685f1e4fd7e",
+  "status": "amendement gelé après analyses 2019-2024 et avant l'analyse corrective 2025",
+  "final_year_status": "les résultats 2025 originaux sont déjà publics ; toute nouvelle valeur est corrective et postérieure",
+  "selection_statement": "aucune politique n'est choisie à partir des résultats 2025 ; toutes les comparaisons ci-dessous ont été fixées avec les années historiques",
+  "fixed_comparisons": {
+    "source": ["source_pooled", "source_class", "source_weighted_aligned"],
+    "local_scopes_same_labels": ["pooled", "class", "department_class"],
+    "deployable_allocations": ["proportional", "uniform", "pilot_variance"],
+    "historical_oracles_only": ["oracle_variance_costed", "oracle_variance", "oracle_equal_fatal"],
+    "budgets": [500, 1000, 2000],
+    "simulation_stress_budget": 2400
+  },
+  "historical_findings_before_2025_correction": {
+    "same_domain_source_pooled_fatal_coverage_mean": 0.0,
+    "density_weighted_old_coverage_mean": 0.8966,
+    "density_weighted_aligned_coverage_mean": 0.9098,
+    "density_weighted_aligned_fatal_coverage_mean": 0.0,
+    "pilot_zero_fatal_department_draw_rate": 0.6351851851851852,
+    "pilot_mean_fatal_labels_per_department_draw": 0.45555555555555555,
+    "interpretation": "le zéro de couverture mortelle pooled existe sans décalage ; l'alignement des densités corrige la baseline mais pas ce défaut de couverture conditionnelle ; aucun gain stable de l'allocation pilot n'est établi"
+  },
+  "fingerprint": {
+    "config.json": "2c947ab87299757416b638dd6e37d29b6e1ff2c04a36f28a11f25288679836b9",
+    "audit_config.json": "e7e1e14ec8492ddce6d64c604124a8e30712bc92aabbacfc3e39294ddeb7c27c",
+    "data.py": "134ae5412f09c9cd36d29e15a7d79c7164e5f4ab3dc46c2e5e037645cb48c93f",
+    "models.py": "65d9a7ab12616319a02b4836c5a449506ce58fcecd1e90173562165804e0c434",
+    "metrics.py": "37744df3b25a32254674b2bc8fdbb37cd6dc627cb27f1bd902780cfe7edecde3",
+    "conformal.py": "533301a370a5326c791a64a13941a74b4edb8b66242cb339e0c02a28222b0f49",
+    "run.py": "04335d4f48c22553cd7f6710e473fe1fc6110941127f541bcc3cff5a9cff3566",
+    "audit.py": "ebb10a54a225fc1cac5fcc61050402ea4927fe711f039e372355c6d0e4689541"
+  },
+  "sha256": {
+    "audit_protocol.md": "4a4f6a13af80afc1e3c025f1cb54952455c7e7c52e3a2e32d5736e9846c9f2d2",
+    "audit.py": "ebb10a54a225fc1cac5fcc61050402ea4927fe711f039e372355c6d0e4689541",
+    "audit_simulation.py": "8098bd2eb005745aa2322a63a5b6f582c4ae3c6332b6b5c8aac83f2d36225649",
+    "development/metrics.csv": "6f7fddc75349c065e29faea3a106bb0378e4f09d12d8d973241feafc7141b78b",
+    "development/departments.csv": "e98a0f0dcb03363144ee8070128386677df88b5d9de614a3fc16dec633f01fbb",
+    "development/cells.csv": "ff6e0fe7111d154b93b9fd8c9ee5ed46fe8a083f498290b2a1db759f5b58dcd7",
+    "development/allocation.csv": "523d9258039126c5d369ea48d174ea765e99673fb55cd5de9a876cc5dd12ca65",
+    "development/pilot_diagnostics.csv": "9c44039a00d20ba3c81ffb250038d1ee2a16c9e919a7822748eaa031fbc717c0",
+    "development/roles.json": "3982db93985e157366de4ee891823f662984a90d88e84269b03d9a36db985207",
+    "development/source_validation.csv": "3418816ef7c6a901c4e9cb90d30cc15cebe08d16ba790ea7bae40ced368d9291",
+    "development/execution.json": "cc58ed4b51b174adf84ae52c2e91ac3188cea690cf857922fb33212be27b75ac",
+    "simulation/trials.csv": "5fcdeb62dad5c5a7072d461a541f9011f2d2c63913b21fdaf8f6daf2c5933d61",
+    "simulation/summary.csv": "ddc6983dc131f14b595aaeb6770a4d14a08946c215c915fd1a7a9f9f9fec2ab2",
+    "simulation/pilot_diagnostics.csv": "0e5d246a82002c1b00036dcf5cb6919aad00d1d1a53a95fbf5f1ea57bf6630ca",
+    "simulation/execution.json": "8f3d336329d61960f65123412c523d6539f8d8eb17fcaa039260adbc2a0f5437"
+  }
+}

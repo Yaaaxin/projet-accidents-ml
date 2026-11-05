@@ -1,0 +1,10 @@
+{
+  "inputs_sha256": {
+    "results\\development\\metrics.csv": "c8e7160ef5a2b00d31b46d6774f320fbc18fe9c0863b07f61901ac7abb6c9c8d",
+    "results\\final\\metrics.csv": "4b14d3133c7a8665e724d1ac922557ab385ec91552766667cc028d0c24605537",
+    "results\\final\\departments.csv": "75fa987c2f0ccbf095690fc0e5489f015b1ec34eca02cadb86e50b510558671f",
+    "results\\simulation_trials.csv": "ec93f4ed644cdaca7a9f948ea0390d9b36b76c08a8537cd8f7324b5a5f5e7baf"
+  },
+  "reported_trials": 720,
+  "individual_predictions_published": false
+}
