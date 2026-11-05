@@ -1,0 +1,21 @@
+{
+  "base_commit": "35234446432e71b877728ab59ed15685f1e4fd7e",
+  "status_2025": "analyse corrective et postérieure à la publication du test",
+  "density_source_role": "tuning",
+  "local_scopes": ["pooled", "class", "department_class"],
+  "deployable_policies": ["proportional", "uniform", "pilot_variance"],
+  "historical_oracle_policies": ["oracle_variance_costed", "oracle_variance", "oracle_equal_fatal"],
+  "fatal_cell_minimum_alpha_0_10": 9,
+  "oracle_rate_smoothing": "Jeffreys: (deaths + 0.5) / (n + 1)",
+  "simulation_conditions": [
+    "exchangeable",
+    "covariate_shift",
+    "shared_region_effect",
+    "changed_region_effect",
+    "global_concept_drift"
+  ],
+  "simulation_budgets": [120, 600],
+  "simulation_repeats": 100,
+  "simulation_pilot_per_region": 5,
+  "n_jobs": 1
+}

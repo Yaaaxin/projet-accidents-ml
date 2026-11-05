@@ -13,7 +13,7 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 
 def pipeline(x, model, cfg):
-    categorical = x.select_dtypes(include="object").columns.tolist()
+    categorical = [column for column in x if pd.api.types.is_string_dtype(x[column].dtype)]
     numerical = [c for c in x if c not in categorical]
     transform = ColumnTransformer([
         ("numerique", Pipeline([("imputation", SimpleImputer(strategy="median", add_indicator=True, keep_empty_features=True)),

@@ -51,7 +51,7 @@ def split_accidents(data, config):
 
 
 def pipeline_for(X, model_name, config):
-    cats = [c for c in X if X[c].dtype == object]
+    cats = [c for c in X if pd.api.types.is_string_dtype(X[c].dtype)]
     nums = [c for c in X if c not in cats]
     transformers = []
     if nums:
